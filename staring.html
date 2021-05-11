@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="muvi entertainment pvt. ltd">
+	<title>App</title>
+
+	<!-- css -->
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/custom.css" />
+	<link rel="stylesheet" type="text/css" href="../css/staring.css" />
+
+	<!-- js -->
+	<script src="../libs/caph/3.0.1/bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/jquery-3.3.1.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+
+	<!-- custom js -->
+	<script src="../js/util.js" async></script>
+	<script src="../js/staring.js"></script>
+	<script src="../js/rtl.min.js"></script>
+	<script src="../js/history.min.js" async></script>
+</head>
+
+<body>
+	<div class="loader" id="spinner" style="display: none"></div>
+	<div class="container-fluid body-container">
+		<header>
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+				<a class="navbar-brand" href="#"><img src="sapphire.png" /></a>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav dropright ml-auto" id="mainmenu">
+						<!-- <li class="nav-item current" data-permalink="home" id="navhome">
+							<div class="nav-link" id="home">Home</div>
+						</li>
+						<li class="nav-item" data-permalink="search" id="navsearch">
+							<div class="nav-link" id="search">Search</div>
+						</li>
+						<li class="nav-item" data-permalink="category" id="navcat">
+							<div class="nav-link" id="category">Category</div>
+						</li>
+						<li class="nav-item" data-permalink="profile" id="navprofile">
+							<div class="nav-link last-nav" id="profile">Profile</div>
+						</li> -->
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<section id="myLibrarySecBody">
+			<div class="mainsec">
+				<div class="row">
+					<section class="banner">
+						<div class="container-fluid">
+							<div class="row" id="contentdiv" style="display: none;">
+								<div class="col-lg-5 col-md-6 col-sm-6" id="infoSection">
+									<h1 class="heading" id="name"></h1>
+									<div class="p-light mb-3 text-muted" style="display: none;">
+										<span>2012</span> <span>|</span> <span>Fantasy, Science
+											fiction film</span> <span>|<span> </span>2h 23m
+										</span>
+									</div>
+									<p class="mb-5" id="summary"></p>
+									<!-- Button trigger modal -->
+									<div class="underline font-28" id="viewmorediv">
+										<h3 focusable data-perma="viemorefocus" id="viemorefocus"></h3>
+									</div>
+								</div>
+								<div class="col-lg-7 col-md-6 col-sm-6 text-center">
+									<div class="cast-big">
+										<img style="width: 490px; height: 330px" id="cast_imagee" src=""
+											class="img-fluid border-inside" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<div class="loader-blue" id="spinner" style="display: none;"></div>
+					<!-- featured content section Start -->
+					<div class="container-fluid pb-5">
+						<div id="filmographyTitle">
+							<h2 class="heading-small-caps" id="filmographytitle" style="display: none;"></h2>
+						</div>
+						<div class="row content-margin filmographybody" id="feature_content_title"></div>
+					</div>
+					<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+						aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<div class="col-1">
+										<div class="cast-img">
+											<img style="width: 90px; height: 90px" id="modal_cast_imagee"
+												src="tom-profile.jpg">
+										</div>
+									</div>
+									<div class="col-11 pl-2">
+										<h2 class="heading2" id="exampleModalLongTitle"></h2>
+										<div class="title-bar"></div>
+										<div class="p-light mb-3 text-muted"></div>
+									</div>
+								</div>
+								<div class="modal-body p-4" id="mbody" style="overflow-x: hidden; height: 600px;">
+									<p id="modalsummary"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>

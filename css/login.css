@@ -1,0 +1,111 @@
+body {
+  background-color: #1d2a30;
+  background-image: url(../images/background.png);
+  background-size: cover;
+}
+.logosec {
+  height: 100vh;
+  position: relative;
+  padding: 140px;
+}
+.logomain {
+  position: relative;
+  float: left;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.logomain img {
+  height: 28em;
+  width: auto;
+}
+.right-section {
+  height: 100vh;
+  position: relative;
+  padding: 140px;
+}
+.logIn-form {
+  position: relative;
+  float: left;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+.middle-bar {
+  height: 100%;
+  background: #384144;
+  width: 2px;
+  position: absolute;
+  left: -190px;
+}
+.form-control {
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 30px 25px;
+  font-size: 32px;
+  font-weight: 300;
+  color: #e6e6e6;
+  background-color: rgba(255, 255, 255, 0.25);
+  border: 2px solid #ced4da;
+  border-radius: 0.45rem;
+}
+.btn-primary {
+  color: #fff;
+  background-color: transparent;
+  border-color: grey;
+  padding: 7px;
+  font-size: 32px;
+  border-radius: 8px;
+  text-transform: none;
+}
+.font-30 {
+  font-size: 28px;
+  font-weight: 400;
+}
+.text-muted {
+  color: #6c757d !important;
+}
+.current {
+  background: #0cb9f2;
+}
+#frgt .current {
+  background: rgba(12, 185, 242, 0) !important;
+  color: #0cb9f2;
+}
+.current .form-control {
+  border: 2px solid #0cb9f2 !important;
+  background: #777777 !important;
+  border-radius: 0.45rem;
+  color: #fff;
+  border-radius: 0.45rem;
+}
+.custom-msg {
+  display: none;
+  position: fixed;
+  top: 85%;
+  left: 50%;
+  width: 50%;
+  line-height: 1em;
+  margin: auto;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  text-align: center;
+}
+.custom-msg-forgotpassword {
+  display: none;
+  position: fixed;
+  top: 90%;
+  left: 50%;
+  width: 50%;
+  line-height: 1em;
+  margin: auto;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  text-align: center;
+}
+.newUser {
+  text-align: right;
+}
+#login3.current {
+  background: #0cb9f2 !important;
+}

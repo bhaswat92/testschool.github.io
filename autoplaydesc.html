@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>App</title>
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- include CAPH 3.0.1 default package -->
+  <link href="libs/caph/3.0.1/caph.min.css" rel="stylesheet" type="text/stylesheet" />
+  <!-- include jQuery file (you can use AngularJS & jQuery in your environment) -->
+  <script src="libs/caph/3.0.1/bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+  <!-- include the CAPH Package for AngularJS -->
+  <script src="libs/caph/3.0.1/caph-jquery.min.js"></script>
+  <script type="text/javascript" language="javascript" src="$MANAGER_WIDGET/Common/API/Widget.js"></script>
+  <script src="js/history.min.js" async></script>
+  <style>
+    body {
+      background-size: cover;
+    }
+
+    .maincircle {
+      width: 150px;
+      height: 150px;
+      background: #e6e2e7;
+      border-radius: 50%;
+      margin-top: 4%;
+      margin-left: 45%;
+    }
+
+    .maincircle .circle .mask,
+    .maincircle .circle .inner_fill {
+      width: 150px;
+      height: 150px;
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .maincircle .circle .mask {
+      clip: rect(0px, 150px, 150px, 75px);
+    }
+
+    .maincircle .circle .mask .inner_fill {
+      clip: rect(0px, 75px, 150px, 0px);
+      background-color: #0cb9f2;
+    }
+
+    .maincircle .circle .mask.full,
+    .maincircle .circle .inner_fill {
+      animation: inner_fill ease-in-out 7s;
+      transform: rotate(180deg);
+    }
+
+    @keyframes inner_fill {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(180deg);
+      }
+    }
+
+    .maincircle .inside-circle {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: #f9e;
+      line-height: 130px;
+      text-align: center;
+      margin-top: 10px;
+      margin-left: 10px;
+      position: absolute;
+      z-index: 100;
+      font-weight: 700;
+      font-size: 2em;
+    }
+
+    .playicon {
+      font-size: 74px;
+      position: absolute;
+      top: 28px;
+      left: 44px;
+      color: white;
+    }
+
+    .header {
+      top: 30%;
+      left: 50%;
+      font-size: 29px;
+      position: absolute;
+      color: #fff;
+    }
+
+    .season {
+      top: 20%;
+      left: 45%;
+      font-size: 29px;
+      position: absolute;
+      color: #fff;
+    }
+
+    .cancel {
+      top: 75%;
+      left: 44%;
+      background: black;
+      width: 175px;
+      height: 70px;
+      text-align: center;
+      font-size: 20px;
+      position: absolute;
+      color: #fff;
+    }
+
+    .custom-msg {
+      width: 200px;
+      height: 20px;
+      height: auto;
+      position: absolute;
+      left: 0%;
+      bottom: 50px;
+      background-color: black;
+      color: white;
+      font-family: Calibri;
+      font-size: 35px;
+      z-index: 4;
+      padding: 10px;
+      height: 100px;
+      width: 100%;
+      text-align: center;
+      border-radius: 2px;
+      -webkit-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+      -moz-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+      box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div class="season">
+    <h1 id="season_title">S1:E1</h1>
+  </div> -->
+  <div class="container">
+    <p align="center" style="font-size: 5em; margin-top: 5%">
+      <font color="white"><b id="season_title">s1:E1</b></font>
+    </p>
+
+    <!-- <div class="header" style="display:show;">
+    <h1 id="title">Avenger</h1>
+  </div> -->
+    <p align="center" style="font-size: 5em; margin-top: 7%">
+      <font color="white"><b id="title">Avenger</b></font>
+    </p>
+    <div focusable class="cancel" id="cancel">
+      <h1 style="margin-top: 11px; margin-left: 10px">Cancel</h1>
+    </div>
+    <!-- <div class="wrapper" data-anim="base wrapper">
+  <div class="circle" data-anim="base left"></div>
+  <div class="circle" data-anim="base right"></div>
+</div> -->
+    <div class="maincircle">
+      <div class="circle">
+        <div class="mask full">
+          <div class="inner_fill"></div>
+        </div>
+        <div class="mask half">
+          <div class="inner_fill"></div>
+        </div>
+        <div class="inside-circle">
+          <i class="fa fa-play playicon" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    var subtitleArr = [];
+    var stream_uniq_id = "";
+    var content_uniq_id = "";
+    var content_types_id = "";
+    var default_img_url = "https://api.muvi.com/img/no-image.png";
+    var mediaqueueresponse = JSON.parse(
+      localStorage.getItem("mediaqueueresponse")
+    );
+    if (localStorage.getItem("authtokenstr") != null) {
+      var authtoken = localStorage.getItem("authtokenstr");
+      var baseurl = localStorage.getItem("baseurl");
+    }
+    var loginstr = localStorage.getItem("loginstr");
+    var counter = -1;
+
+    if (localStorage.getItem("count") != null) {
+      counter = localStorage.getItem("count");
+    } else {
+      counter = counter - 1;
+    }
+
+    function getParameterByName(name, href) {
+      name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+      var regexS = "[\\?&]" + name + "=([^&#]*)";
+      var regex = new RegExp(regexS);
+      var results = regex.exec(href);
+      if (results == null) return "vikings";
+      else return decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    var click_key = getParameterByName("click_key", window.location.href);
+    content_types_id = getParameterByName(
+      "content_types_id",
+      window.location.href
+    );
+
+    var purchasetype = "";
+
+    //alert(click_key);
+    stream_uniq_id = localStorage.getItem("stream_in_video");
+    content_uniq_id = localStorage.getItem("content_uniq_id_video");
+    var curr_permalink = localStorage.getItem("curr_permalink");
+    var page = localStorage.getItem("page");
+
+    //alert(stream_uniq_id);
+    //alert(content_uniq_id);
+    console.log("stream unique id==" + stream_uniq_id);
+    console.log("response of media queue" + mediaqueueresponse);
+    content_types_id = mediaqueueresponse.next_media_info.content_types_id;
+    if (click_key == "next") {
+      stream_uniq_id = mediaqueueresponse.next_media_info.stream_uniq_id;
+      content_uniq_id = mediaqueueresponse.next_media_info.content_uniq_id;
+
+      if (content_types_id == 3) {
+        purchasetype = "episode";
+      } else {
+        purchasetype = "show";
+      }
+      if (
+        mediaqueueresponse.next_media_info.poster_for_tv == default_img_url
+      ) {
+        $("body").css("background-image", "url(images/noimage.png)");
+      } else {
+        $("body").css(
+          "background-image",
+          'url("' + mediaqueueresponse.next_media_info.poster_for_tv + '")'
+        );
+      }
+
+      if (mediaqueueresponse.next_media_info.season_no == "") {
+        //$("#season_title").hide();
+        $("#season_title").text("");
+        $("#season_title").text("S1:E1");
+        document.getElementById("season_title").style.visibility = "hidden";
+      } else {
+        $("#season_title").text(
+          "S" +
+          mediaqueueresponse.next_media_info.season_no +
+          ": E" +
+          mediaqueueresponse.next_media_info.episode_no
+        );
+      }
+
+      $("#title").text(mediaqueueresponse.next_media_info.content_title);
+    } else {
+      stream_uniq_id = mediaqueueresponse.previous_media_info.stream_uniq_id;
+      content_uniq_id =
+        mediaqueueresponse.previous_media_info.content_uniq_id;
+      content_uniq_id =
+        mediaqueueresponse.previous_media_info.content_uniq_id;
+
+      if (content_types_id == 3) {
+        purchasetype = "episode";
+      } else {
+        purchasetype = "show";
+      }
+      if (mediaqueueresponse.previous_media_info.season_no == "") {
+        //$("#season_title").hide();
+        $("#season_title").text("S1:E1");
+        document.getElementById("season_title").style.visibility = "hidden";
+      } else {
+        $("#season_title").text(
+          "S" +
+          mediaqueueresponse.previous_media_info.season_no +
+          ": E" +
+          mediaqueueresponse.previous_media_info.episode_no
+        );
+      }
+      if (
+        mediaqueueresponse.previous_media_info.poster_for_tv ==
+        default_img_url
+      ) {
+        $("body").css("background-image", "url(images/noimage.png)");
+      } else {
+        $("body").css(
+          "background-image",
+          'url("' +
+          mediaqueueresponse.previous_media_info.poster_for_tv +
+          '")'
+        );
+      }
+      $("#title").text(mediaqueueresponse.previous_media_info.content_title);
+    }
+
+    callValidateUser(stream_uniq_id, content_uniq_id);
+
+    function callGetVideoDetails(muvi_streamunique_id, muviunique_id) {
+      console.log(
+        muvi_streamunique_id +
+        "         " +
+        muviunique_id +
+        "         " +
+        loginstr
+      );
+      var videodetailsxhttp = new XMLHttpRequest();
+      videodetailsxhttp.onreadystatechange = function () {
+        $("#spinner").show();
+        if (this.readyState == 4 && this.status == 200) {
+          $("#spinner").hide();
+          var videodetails_response = JSON.parse(this.responseText);
+          console.log(videodetails_response);
+          if (videodetails_response.code == 200) {
+            if (videodetails_response.hasOwnProperty("licenseUrl")) {
+              if (videodetails_response.subTitle.length > 0) {
+                for (var index = 0; index < videodetails_response.subTitle.length; index++) {
+                  console.log(videodetails_response.subTitle[index]);
+                  if (index == 0) {
+                    var subtileData = {
+                      'default': true,
+                      'kind': 'subtitles',
+                      'label': videodetails_response.subTitle[index].language,
+                      'src': videodetails_response.subTitle[index].url,
+                      'srclang': videodetails_response.subTitle[index].code
+                    }
+                  } else {
+                    var subtileData = {
+                      'kind': 'subtitles',
+                      'label': videodetails_response.subTitle[index].language,
+                      'src': videodetails_response.subTitle[index].url,
+                      'srclang': videodetails_response.subTitle[index].code
+                    }
+                  }
+
+                  subtitleArr.push(subtileData);
+                }
+                localStorage.setItem("subtitleArr", JSON.stringify(subtitleArr));
+              } else {
+                localStorage.removeItem("subtitleArr");
+                // remove subtitle from player
+              }
+            } else {
+              if (videodetails_response.smi_language_list.length > 0) {
+                var smiSubtitle = videodetails_response.smi_subtitle;
+                localStorage.setItem("smiSubtitle", smiSubtitle);
+                localStorage.setItem(
+                  "subtitleLang",
+                  JSON.stringify(videodetails_response.smi_language_list)
+                );
+              } else {
+                localStorage.removeItem("smiSubtitle");
+                localStorage.removeItem("subtitleLang");
+              }
+
+            }
+            var video_url = videodetails_response.videoUrl;
+            var thirdpartyUrl = videodetails_response.thirdparty_url;
+            var child =
+              "licenseUrl" in videodetails_response || "there is no child";
+            if (child == "there is no child") {
+            } else {
+              var licenseUrl = videodetails_response.licenseUrl;
+            }
+            //alert(videodetails_response.videoUrl);
+
+            if (
+              thirdpartyUrl == "" ||
+              thirdpartyUrl == " " ||
+              thirdpartyUrl == "null" ||
+              thirdpartyUrl == null
+            ) {
+              if (
+                video_url == "" ||
+                video_url == " " ||
+                video_url == "null" ||
+                video_url == null
+              ) {
+                $("#nocontent").html("No video available");
+                $("#nocontent").show();
+                var timer = setTimeout(function () {
+                  $("#nocontent").hide();
+                }, 1000);
+              } else {
+                localStorage.setItem("url", video_url);
+                localStorage.setItem("thirdpartyUrl", thirdpartyUrl);
+                if (
+                  licenseUrl == "" ||
+                  licenseUrl == " " ||
+                  licenseUrl == "null" ||
+                  licenseUrl == null
+                ) {
+                  localStorage.setItem("licenseurl", "");
+                  localStorage.setItem("DRM", "");
+                  localStorage.setItem("customdata", "");
+                  if (videodetails_response.hasOwnProperty("licenseUrl")) {
+                    setTimeout(function () {
+                      counter = counter - 1;
+                      localStorage.setItem("count", counter);
+                      window.location.href = "theoplayer.html?stream_uniq_id=" + stream_uniq_id + "&muvi_uniq_id=" + muviunique_id;
+                    }, 6000);
+                  } else {
+                    setTimeout(function () {
+                      counter = counter - 1;
+                      localStorage.setItem("count", counter);
+                      window.location.href =
+                        "playerdrm.html?stream_uniq_id=" + stream_uniq_id;
+                    }, 6000);
+                  }
+
+                } else {
+                  localStorage.setItem("licenseurl", licenseUrl);
+                  localStorage.setItem("DRM", "PLAYREADY");
+                  localStorage.setItem("customdata", "");
+                  if (videodetails_response.hasOwnProperty("licenseUrl")) {
+                    setTimeout(function () {
+                      counter = counter - 1;
+                      localStorage.setItem("count", counter);
+                      window.location.href = "theoplayer.html?stream_uniq_id=" + stream_uniq_id + "&muvi_uniq_id=" + muviunique_id;
+                    }, 6000);
+                  } else {
+                    setTimeout(function () {
+                      counter = counter - 1;
+                      localStorage.setItem("count", counter);
+                      window.location.href =
+                        "playerdrm.html?stream_uniq_id=" + stream_uniq_id;
+                    }, 6000);
+                  }
+                }
+              }
+            } else {
+              alert("Unable to play the content");
+              window.history.go(counter);
+              localStorage.removeItem("count");
+              localStorage.removeItem("autoplayavialble");
+            }
+          } else {
+          }
+        }
+      };
+      videodetailsxhttp.open(
+        "GET",
+        "" +
+        baseurl +
+        "getVideoDetails?authToken=" +
+        authtoken +
+        "&license_type=1" +
+        "&content_uniq_id=" +
+        muviunique_id +
+        "&stream_uniq_id=" +
+        muvi_streamunique_id +
+        "&user_id=" +
+        loginstr +
+        "&subtitle_type=smi&lang_code=en",
+        true
+      );
+      videodetailsxhttp.send();
+    }
+
+    function callValidateUser(muvi_streamunique_id, muviunique_id) {
+      //alert("muvi_streamunique_id=="+muvi_streamunique_id+"muviunique_id=="+muviunique_id);
+      var validateuserxhttp = new XMLHttpRequest();
+      validateuserxhttp.onreadystatechange = function () {
+        $("#spinner").show();
+        if (this.readyState == 4 && this.status == 200) {
+          $("#spinner").hide();
+          var validateuser_response = JSON.parse(this.responseText);
+          if (validateuser_response.code == 429) {
+            callGetVideoDetails(muvi_streamunique_id, muviunique_id);
+          } else {
+            alert(
+              "You are not authorised to view this content. Please activate from website"
+            );
+            window.history.go(counter);
+            localStorage.removeItem("count");
+            localStorage.removeItem("autoplayavialble");
+            //callGetVideoDetails(muvi_streamunique_id,muviunique_id);
+            //$('.toast').text("You are not authorised to view this content. Please activate from website").fadeIn(400).delay(3000).fadeOut(400);
+            //window.history.go(counter);
+            //localStorage.removeItem("count");
+            //localStorage.removeItem("autoplayavialble");
+          }
+        }
+      };
+
+      validateuserxhttp.open(
+        "GET",
+        "" +
+        baseurl +
+        "isContentAuthorized?authToken=" +
+        authtoken +
+        "&movie_id=" +
+        muviunique_id +
+        "&episode_id=" +
+        muvi_streamunique_id +
+        "&season_id=0&purchase_type=" +
+        purchasetype +
+        "&user_id=" +
+        loginstr +
+        "",
+        true
+      );
+      validateuserxhttp.send();
+    }
+
+    $.caph.focus.activate(function (
+      nearestFocusableFinderProvider,
+      controllerProvider
+    ) {
+      console.log(controllerProvider);
+      console.log(nearestFocusableFinderProvider);
+      controllerProvider.onFocused(function (event, originalEvent) {
+        var id = $(event.currentTarget).attr("id");
+        $(event.currentTarget).css({
+          background: "#00abea",
+        });
+      });
+
+      controllerProvider.onBlurred(function (event, originalEvent) {
+        $(event.currentTarget).css({
+          //border : '3px solid transparent'
+          background: "#000000",
+        });
+      });
+
+      controllerProvider.onSelected(function (event, originalEvent) {
+        $(event.currentTarget).toggleClass("selected");
+        var id = $(event.currentTarget).attr("id");
+        console.log("id==" + id);
+        if (id == "cancel") {
+          window.history.go(counter);
+          localStorage.removeItem("count");
+          localStorage.removeItem("autoplayavialble");
+        }
+      });
+    });
+
+    document.addEventListener("keydown", function (e) {
+      console.log("Button clicked: " + e.keyCode);
+      switch (e.keyCode) {
+        case 37: //LEFT arrow
+          break;
+        case 39: //RIGHT arrow
+          break;
+
+        case 13: //OK
+          break;
+        case 10009: //RETURN button
+          //alert(counter);
+
+          if ("customCounter" in localStorage) {
+            customBack(localStorage.getItem("customCounter"));
+          } else {
+            //window.history.go(counter);
+            customBack(1);
+          }
+          //window.history.go(counter);
+          localStorage.removeItem("count");
+          localStorage.removeItem("autoplayavialble");
+          break;
+      }
+    });
+    function customBack(customCounter) {
+      let arrObj = JSON.parse(localStorage.getItem("historyArray"));
+      for (var i = 0; i < customCounter; i++) {
+        arrObj.pop();
+      }
+      if (arrObj.length > 0) {
+        window.location.href = arrObj[arrObj.length - 1];
+        arrObj.pop();
+        localStorage.setItem("historyArray", JSON.stringify(arrObj));
+      } else {
+        window.history.back();
+      }
+    }
+  </script>
+</body>
+
+</html>

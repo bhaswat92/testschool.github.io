@@ -1,0 +1,98 @@
+.background {
+  background: url(../images/background.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.left-section {
+  height: 100vh;
+  position: relative;
+  padding: 140px;
+}
+.outer-logo {
+  position: relative;
+  float: left;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.right-section {
+  height: 100vh;
+  position: relative;
+  padding: 140px;
+}
+.logIn-form {
+  position: relative;
+  float: left;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+.middle-bar {
+  height: 100%;
+  background: #384144;
+  width: 2px;
+  position: absolute;
+  left: -140px;
+}
+.form-control {
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 30px 25px;
+  font-size: 32px;
+  font-weight: 300;
+  color: #e6e6e6;
+  background-color: rgba(255, 255, 255, 0.25);
+  border: 2px solid #ced4da;
+  border-radius: 0.45rem;
+}
+.text-muted {
+  color: #6c757d !important;
+}
+.custom-msg-forgotpassword {
+  display: none;
+  position: fixed;
+  top: 90%;
+  left: 50%;
+  width: 50%;
+  line-height: 1em;
+  margin: auto;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  text-align: center;
+}
+.btn-primary {
+  color: #fff;
+  background-color: transparent;
+  border-color: grey;
+  padding: 7px;
+  font-size: 32px;
+  border-radius: 8px;
+  text-transform: none;
+}
+.font-30 {
+  font-size: 30px;
+  font-weight: 400;
+}
+.current {
+  background: #0cb9f2 !important;
+}
+
+#registerform .current {
+  border: 2px solid rgb(12, 185, 242);
+  background: transparent;
+  border-radius: 0.45rem;
+}
+#textmessage .current {
+  color: #0cb9f2;
+  border: none !important;
+  background: rgba(12, 185, 242, 0) !important;
+}
+.current input {
+  background: #545c60;
+}
+.outer-logo img {
+  height: 31em;
+  width: auto;
+}

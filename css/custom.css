@@ -1,0 +1,229 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1b262b;
+  font-size: 16px;
+  line-height: 22px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  color: #fff;
+  overflow: hidden;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+.message-container {
+  position: fixed;
+  bottom: 5%;
+  width: 100%;
+  left: 0;
+}
+.message {
+  font-size: 4em;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+}
+.card {
+  /* background-color: #0a0a0a; */
+  width: 100%;
+  height: 12em;
+  background-image: url("./../images/languageimage.jpg");
+}
+.card p {
+  padding: 58px 0;
+  text-align: center;
+  font-size: 27px;
+  line-height: 1.1em;
+}
+.cus-langdiv {
+  background: #24323b;
+  padding: 0px;
+  margin: 11px 22px;
+  border-radius: 5px;
+}
+#language-div .current {
+  box-shadow: 0px 0px 13px 2px #0cb9f2;
+}
+/* Spinner part */
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #0cb9f2;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 47%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 9999;
+}
+/* Spinner part */
+/*Header*/
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 99999;
+  top: 0;
+}
+.bg-dark {
+  background-color: #0a191f !important;
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: #696969;
+  font-size: 1.7em;
+  font-weight: normal;
+  padding: 0 32px;
+}
+.nav-link {
+  list-style: none;
+  border-right: 1px solid #696969;
+}
+.last-nav {
+  border-right: none;
+  padding-right: 11px !important;
+}
+.navbar-dark .navbar-brand img {
+  width: 11em;
+  height: auto;
+}
+.current .nav-link {
+  color: #0cb9f2 !important;
+}
+.see-more {
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  text-align: center;
+  margin: auto;
+  height: 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 54%;
+}
+.loader-blue {
+  border: 10px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 10px solid #0cb9f2;
+  width: 100px;
+  height: 100px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  position: fixed;
+  top: 45%;
+  left: 47%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  align: center;
+  z-index: 999999;
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.body-container {
+  padding: 0;
+}
+.mainsec {
+  margin-top: 6.5em;
+  position: relative;
+}
+
+.form-control {
+  padding: 1.8rem 0.75rem !important;
+  font-size: 1.5rem !important;
+}
+.custom-msg {
+  display: none;
+  position: fixed;
+  top: 85%;
+  left: 50%;
+  width: 50%;
+  line-height: 1em;
+  margin: auto;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  text-align: center;
+}
+.cusWidth {
+  width: 23%;
+  float: left;
+  position: relative;
+  border-radius: 5px;
+}
+::placeholder {
+  color: #e6e6e6 !important;
+  opacity: 1; /* Firefox */
+}
+.checked {
+  color: #0cb9f2;
+}
+.rating {
+  margin-bottom: 12px;
+}
+.rating span {
+  padding-right: 2px;
+}
+.rating span.fa {
+  font-size: 28px;
+}
+
+form .form-control::-webkit-input-placeholder {
+  color: #ececec;
+}
+
+form .form-control::-moz-placeholder {
+  color: #ececec;
+}
+form .form-control:-ms-input-placeholder {
+  color: #ececec;
+}
+form .form-control:placeholder {
+  color: #ececec;
+}
+#modalsummary {
+  color: #fff !important;
+}
+.navActive {
+  color: #fff !important;
+  /* text-decoration: underline; */
+}
+.activeLang {
+  color: #0cb9f2;
+}
+.loader_con {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.97);
+  z-index: 999999;
+  position: absolute;
+}

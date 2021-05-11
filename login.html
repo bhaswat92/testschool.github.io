@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="muvi entertainment pvt. ltd">
+	<title>App</title>
+
+	<!-- css -->
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/custom.css" />
+	<link rel="stylesheet" type="text/css" href="../css/login.css" />
+
+	<!-- js -->
+	<script src="../libs/caph/3.0.1/bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/jquery-3.3.1.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+
+	<!-- custom js -->
+	<script src="../js/util.js" async></script>
+	<script src="../js/login.js" async></script>
+	<script src="../js/rtl.min.js" async></script>
+
+</head>
+
+<body>
+	<div class="container-fluid ">
+		<div class="row">
+			<div class="col-lg-6 p-10">
+				<div class="logosec">
+					<div class="logomain">
+						<img class="img-fluid" src="logo.png" alt="logo">
+					</div>
+				</div>
+			</div>
+
+			<div class="loader-blue" id="spinner" style="display: none"></div>
+
+			<div class="col-lg-6 p-10">
+				<div class="right-section">
+					<div class="logIn-form">
+						<div class="middle-bar"></div>
+						<form id="forrm">
+							<div class="form-group" id="login1Div">
+								<input id="login1" type="email" class="form-control" value="freeuser@yahoo.com" placeholder="Email">
+							</div>
+							<div class="form-group" id="login2Div">
+								<input id="login2" type="password" class="form-control" placeholder="Password" value="freeuser123">
+							</div>
+							<button id="login3" type="button" class="current btn btn-primary w-100 mt-3"></button>
+						</form>
+						<div class="row mt-5 font-30" id="frgt">
+							<div class="col-md-5" id="forgotDiv">
+								<span id="forgot">Forgot Password ?</span>
+							</div>
+							<div class="col-md-7 newUser" id="newUserDiv">
+								<span class="text-muted">New User? </span> &nbsp;<span class="" id="register"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- notification message -->
+		<div class="custom-msg" id="nocontent">
+		</div>
+	</div>
+	<!-- notification message -->
+	<div class="custom-msg" id="nocontent"></div>
+</body>
+
+</html>

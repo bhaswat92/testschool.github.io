@@ -1,0 +1,33 @@
+.lang-hdr {
+  text-align: center;
+  width: 100%;
+  float: left;
+  margin-top: 8%;
+  margin-bottom: 10%;
+}
+.lang-hdr h2 {
+  font-size: 5em;
+}
+#language-div {
+  width: 100%;
+  float: left;
+  display: inline-flex;
+  overflow: hidden;
+}
+#language-div .col-lg-2 {
+  float: left;
+}
+.continue {
+  font-size: 43px;
+  margin-top: 3em;
+  color: #fff;
+  background-color: #0cb9f2;
+  border-color: #0cb9f2;
+  padding: 2px 45px 2px 45px;
+}
+/* .bottom-line{
+    background-color: #0cb9f2;
+    height: 2px;
+    margin: 0 auto;
+    width: 250px;
+} */

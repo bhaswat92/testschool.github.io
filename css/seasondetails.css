@@ -1,0 +1,265 @@
+.fixed-test {
+  position: fixed;
+  z-index: 6;
+}
+.heading {
+  font-size: 54px;
+  font-weight: 600;
+}
+.title-bar {
+  border-bottom: 2px solid #0cb9f2;
+  width: 80px;
+  margin-top: -8px;
+  margin-bottom: 15px;
+}
+.p-light {
+  font-size: 1.43vw;
+  font-weight: 100;
+}
+.p-light span {
+  color: #a8a7a7;
+}
+#one {
+  padding: 0px 5px 0px 5px;
+}
+#two {
+  padding: 0px 5px 0px 5px;
+}
+.rating {
+  margin-bottom: 40px;
+}
+.checked {
+  color: orange;
+}
+#seanson_div .current {
+  border: none;
+}
+#mainmenu .current {
+  border: none;
+}
+.current {
+  color: #0cb9f2;
+  /* border: 3px solid #0cb9f2; */
+}
+.singlepart-text {
+  font-size: 31px;
+  text-transform: none;
+  padding-left: 25px;
+  vertical-align: middle !important;
+  /* position: absolute; */
+}
+.right-scroll {
+  right: 0;
+  position: absolute;
+}
+
+.list-box-select {
+  background-color: transparent;
+  float: left;
+  width: 98%;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+.list-img-select {
+  float: left;
+  width: 35%;
+}
+.border-inside {
+  border: 3px solid #4b4b4b;
+  border-radius: 0px;
+}
+.list-text-select {
+  width: 65%;
+  padding: 0 10px;
+  float: left;
+}
+.heading2 {
+  font-size: 45px;
+}
+.title-bar3 {
+  border-bottom: 2px solid #0cb9f2;
+  width: 50px;
+  margin-top: -10px;
+  margin-bottom: 15px;
+}
+p {
+  font-size: 25px;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+.custom-msg {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  top: inherit;
+  /* left: 64%; */
+  width: 50%;
+  line-height: 1em;
+  margin: auto;
+  transform: translate(-50%, -50%);
+  font-size: 2.3em;
+  text-align: center;
+  background: #1e282b;
+  padding: 30px 27px;
+  border-radius: 10px;
+  color: #44c7f3;
+}
+.row {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+.descriptionsec p {
+  font-size: 1.4em;
+  line-height: 1.4em;
+  font-weight: 400;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  width: 100%;
+}
+.descriptionsec .current {
+  border: none;
+}
+.underline {
+  text-decoration: underline !important;
+  font-size: 20px;
+}
+.mt-8 {
+  margin-top: 50px;
+}
+.titlesection {
+  width: 100%;
+  height: 100vh;
+}
+
+.backgroungbg {
+  background-image: url(../images/background.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+}
+.backgroungbg:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/season_details_overlay.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  top: 1px;
+  bottom: 0;
+}
+.title-bar {
+  border-bottom: 2px solid #0cb9f2;
+  width: 80px;
+  margin-top: -8px;
+  margin-bottom: 15px;
+}
+.list-img-select {
+  position: relative;
+}
+.dtls {
+  position: absolute;
+  bottom: -3%;
+  left: 4%;
+  z-index: 999;
+}
+.dtls p {
+  font-size: 36px;
+}
+.list-img-select {
+  float: left;
+  width: 35%;
+}
+.text-muted {
+  color: #fdfdfd !important;
+}
+.episode_img {
+  position: relative;
+}
+/* .episode_img:before{
+    position: absolute;
+    content: "";
+    width:100%;
+    height: 100%;
+    background-image: url(../../images/content_list_overlay.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0px;
+    bottom: 0;
+    left: 0;
+} */
+.heading2 {
+  font-size: 45px;
+}
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.modal-dialog {
+  max-width: 80%;
+  margin: 1.75rem auto;
+}
+.modal-content {
+  background: #313b40;
+  border-radius: 0;
+  z-index: 99999;
+  padding-bottom: 25px;
+}
+.modal-header {
+  background: #2d3539;
+  padding: 15px 15px;
+  border-bottom: 0px solid #dee2e6;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.cast-img {
+  width: auto;
+  height: 96px;
+  float: left;
+  margin-right: 30px;
+}
+
+.modal-body {
+  color: #bebebe;
+  height: 600px;
+  overflow: auto;
+}
+#modalsummary.current {
+  color: #fff !important;
+  text-align: justify;
+  border: none;
+}
+.cast-img {
+  width: auto;
+  height: 96px;
+  float: left;
+  margin-right: 30px;
+}
+.cast-img img {
+  border: 2px solid #0cb9f2;
+  border-radius: 50%;
+}
+.current .border-inside {
+  border: 3px solid #0cb9f2;
+  border-radius: 0px;
+}
+/* .list-box-select .current{
+    background-color: #242e31ab;
+} */
+.episode_img::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-image: url(../../images/content_list_overlay.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  top: 0px;
+  bottom: 0;
+  left: 0;
+}
